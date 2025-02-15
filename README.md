@@ -1,4 +1,4 @@
-# Return on Asset (ROA) Perusahaan
+# Program Analisis Sederhana Return on Asset (ROA) Perusahaan
 
 ## Deskripsi: 
 Return on Asset adalah rasio yang digunakan untuk mengukur kemampuan perusahaan dalam menghasilkan laba dari aset yang dimiliki. ROA dihitung dengan membagi laba bersih dengan total aset.
