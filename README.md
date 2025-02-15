@@ -15,3 +15,4 @@ Program ini dirancang untuk menganalisis kinerja perusahaan berdasarkan data keu
 - Membantu pengguna untuk memahami kinerja perusahaan
 - Membantu pengguna untuk membuat keputusan investasi yang tepat
 - Membantu pengguna untuk menilai kinerja perusahaan berdasarkan rasio keuangan yang akurat.
+- Membandingkan Return on Asset perusahaan
