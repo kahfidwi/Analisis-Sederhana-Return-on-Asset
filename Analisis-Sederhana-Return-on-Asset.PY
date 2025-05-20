@@ -14,11 +14,10 @@ daftar_perusahaan = [
 {"Key_id" : "BJBB2022", "Kode_Emiten" : "BJBB", "Nama_Perusahaan" : "Bank Jawa Barat dan Banten", "Tahun" : 2019, "Laba" : 7.1, "Total_Aset" : 123.5, "Return_on_Aset" : 5.81},
 ]
 
+
 # fungsi tampilan yang sudah di sort
-# Jadi, kode tersebut dapat dibaca sebagai: "Tampilkan data dalam daftar daftar_perusahaan dalam bentuk tabel yang rapi dan terstruktur, 
-# dengan mengurutkan data berdasarkan kunci Key_id, dan gunakan format tabel fancy_grid."
 def tampilan_1():
-    print(tabulate(sorted(daftar_perusahaan, key=lambda x: x['Key_id']), headers="keys", tablefmt="fancy_grid"))
+    print(tabulate(sorted(daftar_perusahaan, key=lambda x: x['Key_id'],reverse="False"), headers="keys", tablefmt="fancy_grid"))
 
 # fungsi input harga
 def input_angka(angka):
@@ -131,7 +130,7 @@ def menambah():
                     tampilan_1()
                     input_kode_emiten = input_kata("Masukan Kode_Emiten perusahaan : ").upper()
                 
-                # Menambahkan variabel "status" untuk memastikan bahwa Kode_Emiten yang ingin ditambahkan ada di daftar perusahaan.
+                # Menambahkan variabel "status" untuk kondisi memastikan bahwa Kode_Emiten yang ingin ditambahkan ada di daftar perusahaan.
                 status = False
                 
                 for i in daftar_perusahaan:
@@ -369,9 +368,9 @@ def perubahan():
         print('''
     -----------------------------------
     | Menu Update Data:
-    | 1. Merubah Kode_Emiten
-    | 2. Merubah Nama_Perusahaan
-    | 3. Merubah Nilai Return_on_Aset         
+    | 1. Mengubah Kode_Emiten
+    | 2. Mengubah Nama_Perusahaan
+    | 3. Mengubah Nilai Return_on_Aset         
     | 4. Kembali ke Menu Utama
     -----------------------------------''') 
 
@@ -395,7 +394,6 @@ def perubahan():
                         yakin_update= input("Apakah ingin melanjutkan mengubah data? (y/n) ").lower()
 
                         if yakin_update == "y": 
-                            
                             status = True
 
                             hasil_ubah1 = input("Masukan Kode_Emiten yang baru: ").upper()
@@ -442,8 +440,6 @@ def perubahan():
 
                 for i in daftar_perusahaan:
                     if i["Kode_Emiten"] == ubah2:
-
-                        kode_emiten = i["Kode_Emiten"]
                         
 
                         yakin_update= input("Apakah ingin melanjutkan mengubah data? (y/n) ").lower()
@@ -464,10 +460,10 @@ def perubahan():
 
                         while True:
                             yakin_tambah = input(f"Apakah anda yakin merubah nama perusahaan? (y/n) ").lower()
-                            if yakin_tambah == "y":
 
+                            if yakin_tambah == "y":
                                 for i in daftar_perusahaan:
-                                    if i["Kode_Emiten"] == kode_emiten:
+                                    if i["Kode_Emiten"] == ubah2:
                                         i["Nama_Perusahaan"] = hasil_ubah2
                                 print(f"Berhasil merubah {ubah2} menjadi {hasil_ubah2}!")  
                                 return
@@ -481,7 +477,7 @@ def perubahan():
                                 continue
 
                 if not status:
-                    print("Kode Key tersebut tidak terdaftar di daftar perusahaan")       
+                    print("Kode_Emiten tersebut tidak terdaftar di daftar perusahaan")       
 
         def ubah_3():
             if menu_update == 3:
@@ -682,11 +678,11 @@ def perbandingan():
                             laba_min = i["Laba"]
                         if i["Total_Aset"] > total_aset_max:
                             total_aset_max = i["Total_Aset"]
-                        if i["Total_Aset"] < total_aset_max:
+                        if i["Total_Aset"] < total_aset_min:
                             total_aset_min = i["Total_Aset"]
-                        if i["Total_Aset"] > total_aset_max:
+                        if i["Return_on_Aset"] > roa_max:
                             roa_max = i["Return_on_Aset"]
-                        if i["Total_Aset"] < total_aset_max:
+                        if i["Return_on_Aset"] < roa_min:
                             roa_min = i["Return_on_Aset"]
                     
                     print(f'''
@@ -704,6 +700,9 @@ Nilai dari Total_Aset Perusahaan paling kecil ditahun {input_perbandingan3} adal
 
         if menu_perbandingan == 3:
             kembali_menu_utama()
+        
+        elif menu_perbandingan > 3:
+            print("Angka tidak valid!")
 
 
 
